@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 20px;
+}
+
+.chat-block {
+    width: 48%;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.block-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.block-header i {
+    margin-right: 10px;
+}
+
+.chat-messages {
+    height: calc(100% - 60px);
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+.chat-message {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.liked {
+    background-color: #66bb6a; /* Green color for liked messages */
+}
+
+.thumbs-up-icon,
+.thumbs-down-icon {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.thumbs-up-icon:hover,
+.thumbs-down-icon:hover {
+    color: #4285f4; /* Change color on hover */
+}
