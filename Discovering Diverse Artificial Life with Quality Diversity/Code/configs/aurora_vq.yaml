@@ -1,0 +1,44 @@
+hydra:
+  job:
+    chdir: True
+  run:
+    dir: ./output/${qd.algo}/${qd.fitness}/${now:%Y-%m-%d_%H%M%S_%f}
+
+defaults:
+  - _self_
+  - qd: ???
+
+seed: 2
+
+# Init pattern
+pattern_id: "5N7KKM"
+R: 13
+T: 10
+
+# Simulation
+world_size: 128
+world_scale: 1
+n_step: 200
+
+# Genotype
+n_params_size: 3
+n_cells_size: 32
+
+# Phenotype
+phenotype_size: 32
+center_phenotype: True
+record_phenotype: True
+adaptive_phenotype: False
+switch: False
+
+# Obstacles (new section with default settings)
+use_obstacles: False
+obstacle_types: ['wall', 'food']
+obstacle_positions: [[16, 16], [100, 100]]
+obstacle_properties:
+  wall:
+    values: [1.0, 1.0, 1.0]
+    size: 10
+  food:
+    values: [0.5, 0.3, 0.7]
+    size: 8

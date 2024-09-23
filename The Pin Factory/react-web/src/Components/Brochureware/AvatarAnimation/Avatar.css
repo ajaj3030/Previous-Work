@@ -1,0 +1,68 @@
+.animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+:root {
+--background-size: 120px; /* Adjust the desired background size value */
+}
+  
+.avatar-img {
+    height: 50px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  
+  
+
+@keyframes moveRoad {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 -100%;
+    }
+}
+  
+
+
+
+
+
+.bubble {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+    line-height: 1.3em;
+    background-color: #fff;
+    color: #000;
+    padding: 3px;
+    box-shadow: 0 -2px #fff, 0 -4px #000, 2px 0 #fff, 2px -2px #000, 4px 0 #000, 0 2px #fff, 0 4px #000, -2px 0 #fff, -2px 2px #000, -4px 0 #000, -2px -2px #000, 2px 2px #000;
+    box-sizing: border-box;
+    max-width: 150px;
+}
+.bubble::after {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+}
+.bubble.shadow {
+    box-shadow: 0 -2px #fff, 0 -4px #000, 2px 0 #fff, 2px -2px #000, 4px 0 #000, 0 2px #fff, 0 4px #000, -2px 0 #fff, -2px 2px #000, -4px 0 #000, -2px -2px #000, 2px 2px #000, 2px 6px rgba(0, 0, 0, 0.1), 6px 2px rgba(0, 0, 0, 0.1), 4px 4px rgba(0, 0, 0, 0.1);
+}
+.bubble.grow {
+    width: initial;
+}
+.bubble.left::after {
+    height: 4px;
+    width: 4px;
+    top: 15px;
+    left: -4px;
+    background: white;
+    box-shadow: -2px -2px #fff, -2px 0 #fff, -4px 0 #fff, 0 -4px #fff, -2px 2px #000, -4px 2px #000, -6px 2px #000, -8px 2px #000, -6px 0 #000, -4px -2px #000, -2px -4px #000, 0 -2px #fff;
+}

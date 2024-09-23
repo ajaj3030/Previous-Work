@@ -1,0 +1,14 @@
+hpc: ajh23@login.hpc.imperial.ac.uk
+job_name: neg_angle_var
+walltime: 36:00:00
+resources: select=1:ncpus=8:mem=48gb:ngpus=1:gpu_type=RTX6000
+job_array: 1-3
+kwargs: null
+args:
+  - "seed=$RANDOM qd=aurora_cl qd.repertoire_size=512 qd.features=128 qd.hidden_size=16 qd.contrastive_loss_fn=0 qd.temperature=0.25"
+  - "seed=$RANDOM qd=aurora_cl qd.repertoire_size=512 qd.features=128 qd.hidden_size=16 qd.contrastive_loss_fn=0 qd.temperature=0.5"
+  - "seed=$RANDOM qd=aurora_cl qd.repertoire_size=512 qd.features=128 qd.hidden_size=16 qd.contrastive_loss_fn=0 qd.temperature=0.75"
+
+  - "seed=$RANDOM qd=aurora_cl qd.repertoire_size=512 qd.features=128 qd.hidden_size=16 qd.contrastive_loss_fn=1 qd.margin=0.25"
+  - "seed=$RANDOM qd=aurora_cl qd.repertoire_size=512 qd.features=128 qd.hidden_size=16 qd.contrastive_loss_fn=1 qd.margin=0.5"
+  - "seed=$RANDOM qd=aurora_cl qd.repertoire_size=512 qd.features=128 qd.hidden_size=16 qd.contrastive_loss_fn=1 qd.margin=0.75"

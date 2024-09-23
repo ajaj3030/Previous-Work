@@ -1,0 +1,49 @@
+algo: aurora_cl
+
+# General
+n_generations: 300
+log_interval: 20
+batch_size: 256
+
+# Repertoire
+repertoire_size: 256
+
+# GA emitter
+iso_sigma: 0.005
+line_sigma: 0.05
+kernel_mutate: False
+mutation_type: None
+variation_percentage: 1
+
+# Evaluation
+fitness: neg_angle_var
+secondary_fitness: null
+secondary_fitness_weight: 1.
+n_keep: 16
+
+# AE
+features: 128
+hidden_size: 8
+dropout: 0.8
+
+train_ratio: 16
+lr_init_value: 5e-4
+lr_end_value: 0.
+lr_transition_steps: 0
+lr_transition_begin: 0
+ae_batch_size: 64
+
+n_keep_ae: 64
+use_data_augmentation: True
+contrastive_learning: True
+
+# Configuration option for selecting the contrastive loss function
+contrastive_loss_fn: 0  
+# Options: 0 for "nt_xent" or 1 for "triplet_margin"
+group_cnn: False
+
+beta: 1.0
+gamma: 1.0
+delta: 0
+temperature: 0.8
+margin: 0.8

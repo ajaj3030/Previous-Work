@@ -1,0 +1,11 @@
+qsub -> submit a job
+qstat -> list of running jobs
+qdel [job-id] -> delete selected job
+quota -> see disk usage
+
+
+## Send container to HPC
+scp -r [container].sif ajh23@login.hpc.ic.ac.uk: /rds/general/user/ajh23/home/
+
+Array-job -> concacted jobs in one Array
+ssh ajh23@login.hpc.ic.ac.uk

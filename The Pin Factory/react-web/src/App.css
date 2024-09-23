@@ -1,0 +1,13 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.paper-texture {
+	width: 100%;
+	height: 100vh;
+	background: #fafafa; /* Adjust this color to your liking */
+	filter: url(#paper);
+  }

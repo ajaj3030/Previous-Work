@@ -1,0 +1,1 @@
+This project cannot currently be run. We used private data from Vodafone here, which we have removed. You can still look at the web-app though, keep in mind we did this in 48 hours!

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>{TITLE}</title>
+		<style>
+			body { margin: 0; }
+		</style>
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "https://unpkg.com/three@0.150.0/build/three.module.js",
+					"three/examples/jsm/controls/OrbitControls.js": "https://unpkg.com/three@0.150.0/examples/jsm/controls/OrbitControls.js"
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<script type="module">
+			import * as THREE from 'three';
+			import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+			// Create a scene, camera, and renderer
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+
+			// Add OrbitControls
+			const controls = new OrbitControls(camera, renderer.domElement);
+			controls.enableDamping = true; // Enable damping (inertia)
+			controls.dampingFactor = 0.05;
+
+			// Keyboard control variables
+			const moveSpeed = 0.05;
+			const keys = { forward: false, backward: false, left: false, right: false};
+
+			// Store planes for later use in animation loop
+			const planes = [];
+
+			// Function to load points and images from the JSON file
+			async function loadPoints() {
+				const response = await fetch('descriptors_3d.json');
+				const pointsData = await response.json();
+
+				const loader = new THREE.TextureLoader();
+				for (let i = 0; i < pointsData.length; i++) {
+					const position = pointsData[i];
+					loader.load(`./media/phenotype_medium_${i.toString().padStart(4, '0')}.png`, (texture) => {
+						const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+						const plane = new THREE.Mesh(new THREE.PlaneGeometry(0.32, 0.32), material);
+						plane.position.set(position[0], position[1], position[2]);
+						planes.push(plane);
+						scene.add(plane);
+					});
+				}
+			}
+
+			// Load points and images data
+			loadPoints();
+
+			// Set initial camera position
+			camera.position.set(0, 1, 5);
+
+			// Animation loop
+			function animate() {
+				requestAnimationFrame(animate);
+				updateCameraPosition();
+				controls.update(); // Update controls
+				planes.forEach(plane => {
+					plane.lookAt(camera.position); // Make each plane face the camera
+				});
+				renderer.render(scene, camera);
+			}
+
+			animate();
+
+			// Handle window resize
+			window.addEventListener('resize', () => {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize(window.innerWidth, window.innerHeight);
+			});
+		</script>
+	</body>
+</html>
