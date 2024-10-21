@@ -1,0 +1,5 @@
+An Earth year was determined to be 367.5 days. 
+Mercury has an orbital period of 0.2399505256648114 Earth years. 
+Venus has an orbital period of 0.6156462585034014 Earth years. 
+Earth has an orbital period of 1.0 year. 
+Mars has an orbital period of 1.817687074829932 Earth years. 
